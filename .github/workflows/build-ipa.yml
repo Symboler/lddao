@@ -11,7 +11,7 @@ permissions:
 jobs:
   build:
     runs-on: macos-15
-    timeout-minutes: 30
+    timeout-minutes: 60
 
     steps:
       - name: Checkout
@@ -26,6 +26,9 @@ jobs:
       - name: Xcode version
         run: xcodebuild -version
 
+      - name: List schemes
+        run: xcodebuild -list -project LingDongDota.xcodeproj
+
       - name: Archive (unsigned)
         run: |
           set -o pipefail
@@ -34,12 +37,43 @@ jobs:
             -scheme LingDongDota \
             -configuration Release \
             -sdk iphoneos \
+            -derivedDataPath "$RUNNER_TEMP/dd" \
             -archivePath "$RUNNER_TEMP/LingDongDota.xcarchive" \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
             DEVELOPMENT_TEAM="" \
             archive 2>&1 | tee build.log
+
+      - name: Publish failure log to ci-logs branch
+        if: failure()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          [ -f build.log ] || echo "build.log not found" > build.log
+          git checkout --orphan ci-logs-tmp
+          git rm -rf --cached . >/dev/null 2>&1 || true
+          git add -f build.log
+          git commit -m "ci: build log for ${GITHUB_SHA}" || true
+          git push -f origin HEAD:ci-logs
+
+      - name: Annotate key errors
+        if: failure()
+        run: |
+          if [ -f build.log ]; then
+            grep -nE "(error:|failing|Undefined symbol|The following build commands failed)" build.log | head -n 40 | while IFS= read -r line; do
+              echo "::error::$(printf '%s' "$line" | cut -c1-1000)"
+            done
+          fi
+
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
+          if-no-files-found: warn
+          retention-days: 30
 
       - name: Publish failure log as commit comment
         if: failure()
