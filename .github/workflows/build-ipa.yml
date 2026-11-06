@@ -5,6 +5,9 @@ on:
   push:
     branches: [ main, master ]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: macos-15
@@ -36,7 +39,23 @@ jobs:
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
             DEVELOPMENT_TEAM="" \
-            archive
+            archive 2>&1 | tee build.log
+
+      - name: Publish failure log as commit comment
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let log = 'build.log not found';
+            try { log = fs.readFileSync('build.log', 'utf8'); } catch (e) {}
+            const tail = log.length > 60000 ? log.slice(-60000) : log;
+            await github.rest.repos.createCommitComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+              body: '### 构建失败日志\n```\n' + tail + '\n```'
+            });
 
       - name: Package unsigned IPA
         run: |
