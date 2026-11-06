@@ -17,7 +17,7 @@ struct HeroIslandLiveActivity: Widget {
                 .activitySystemActionForegroundColor(.white)
         } dynamicIsland: { context in
             let hero = HeroCatalog.hero(id: context.attributes.heroID)
-            DynamicIsland {
+            return DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
                     HStack(spacing: 8) {
                         HeroToken(hero: hero, size: 26)
