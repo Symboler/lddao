@@ -1,23 +1,6 @@
 import SwiftUI
 import UIKit
 
-/// 英雄立绘：优先使用打包进 Bundle 的 CDN 素材，缺失时回退到矢量徽记。
-struct HeroArtworkView: View {
-    let hero: DotaHero
-
-    var body: some View {
-        Group {
-            if let image = UIImage(named: hero.artAsset) {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFill()
-            } else {
-                HeroSigil(hero: hero)
-            }
-        }
-    }
-}
-
 /// 圆形英雄头像，用于灵动岛紧凑态与列表。
 struct HeroToken: View {
     let hero: DotaHero

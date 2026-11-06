@@ -8,6 +8,7 @@ struct ContentView: View {
     @State private var rage: Double = 0.35
     @State private var ticker: Task<Void, Never>?
     @State private var errorMessage: String?
+    @State private var battleStart: Date = Date()
 
     private var isRunning: Bool { activity != nil }
 
@@ -17,7 +18,6 @@ struct ContentView: View {
             ScrollView {
                 VStack(spacing: 18) {
                     header
-                    heroPicker
                     stage
                     statsRow
                     actionButton
@@ -66,102 +66,43 @@ struct ContentView: View {
             Text("灵动岛 · DOTA 英雄")
                 .font(.system(size: 30, weight: .heavy, design: .rounded))
                 .foregroundStyle(.white)
-            Text("选择英雄后开启实时活动，回到桌面即可在灵动岛看到英雄动效")
+            Text("影魔在左侧三连影压，神灵武士在右侧被击杀")
                 .font(.system(size: 12, weight: .medium))
                 .foregroundStyle(.white.opacity(0.55))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    // MARK: - 英雄选择
-
-    private var heroPicker: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 10) {
-                ForEach(HeroCatalog.all) { hero in
-                    heroChip(hero)
-                }
-            }
-            .padding(.vertical, 2)
-        }
-    }
-
-    private func heroChip(_ hero: DotaHero) -> some View {
-        let isSelected = hero.id == selectedHero.id
-        return Button {
-            guard selectedHero.id != hero.id else { return }
-            selectedHero = hero
-            if isRunning {
-                Task { await start() }
-            }
-        } label: {
-            VStack(spacing: 6) {
-                HeroToken(hero: hero, size: 46)
-                    .opacity(isSelected ? 1 : 0.55)
-                Text(hero.name)
-                    .font(.system(size: 11, weight: .semibold))
-                    .foregroundStyle(isSelected ? .white : .white.opacity(0.5))
-            }
-            .frame(width: 68, height: 76)
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(isSelected ? hero.accent.opacity(0.18) : Color.white.opacity(0.04))
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(isSelected ? hero.accent.opacity(0.85) : Color.white.opacity(0.08), lineWidth: 1)
-            )
-        }
-        .buttonStyle(.plain)
-    }
-
     // MARK: - 主预览舞台
 
     private var stage: some View {
-        ZStack(alignment: .bottomLeading) {
-            HeroArtworkView(hero: selectedHero)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .mask(
-                    LinearGradient(
-                        stops: [
-                            .init(color: .black, location: 0),
-                            .init(color: .black, location: 0.55),
-                            .init(color: .clear, location: 1)
-                        ],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
+        VStack(spacing: 0) {
+            PixelDuelView(startDate: battleStart)
+                .frame(height: 200)
 
-            LinearGradient(
-                colors: [.clear, Color(hex: "06040A").opacity(0.85)],
-                startPoint: .center,
-                endPoint: .bottom
-            )
-
-            SoulFlameView(accent: selectedHero.accent, glow: selectedHero.glow, intensity: 1.0, particleCount: 16)
-
-            VStack(alignment: .leading, spacing: 4) {
-                Text(selectedHero.englishName.uppercased())
-                    .font(.system(size: 11, weight: .bold))
-                    .tracking(2)
-                    .foregroundStyle(selectedHero.accent)
-                Text(selectedHero.name)
-                    .font(.system(size: 26, weight: .heavy, design: .rounded))
-                    .foregroundStyle(.white)
-                Text(selectedHero.skillName)
-                    .font(.system(size: 10, weight: .medium))
-                    .foregroundStyle(.white.opacity(0.6))
+            HStack(spacing: 8) {
+                Text("SHADOW FIEND")
+                    .foregroundStyle(Color(hex: "E8663A"))
+                Text("三连影压")
+                    .foregroundStyle(.white.opacity(0.45))
+                Spacer()
+                Text("HUSKAR")
+                    .foregroundStyle(Color(hex: "E0432A"))
             }
-            .padding(16)
+            .font(.system(size: 10, weight: .bold))
+            .tracking(1.2)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 11)
+            .background(Color(hex: "0E0A16"))
         }
-        .frame(height: 300)
-        .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
+        .background(Color(hex: "0B0611"))
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
         .overlay(
-            RoundedRectangle(cornerRadius: 26, style: .continuous)
-                .stroke(selectedHero.accent.opacity(0.35), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .stroke(Color(hex: "E8663A").opacity(0.3), lineWidth: 1)
         )
-        .shadow(color: selectedHero.accent.opacity(0.25), radius: 18, y: 8)
+        .shadow(color: Color(hex: "8A3BE0").opacity(0.25), radius: 18, y: 8)
+        .onTapGesture { battleStart = Date() }
     }
 
     // MARK: - 数据区
@@ -238,7 +179,7 @@ struct ContentView: View {
                     .foregroundStyle(Color(hex: "FF7A70"))
                     .multilineTextAlignment(.center)
             }
-            Text("开启后请回到桌面或锁屏查看：紧凑态显示英雄头像与魂能，长按展开可查看技能特效与充能进度。")
+            Text("开启后回到桌面：紧凑态显示影魔头像，长按展开即可观看三连影压击杀神灵武士的像素动画。")
                 .font(.system(size: 11, weight: .regular))
                 .foregroundStyle(.white.opacity(0.4))
                 .multilineTextAlignment(.center)
@@ -267,10 +208,12 @@ struct ContentView: View {
         )
         souls = 0
         rage = 0.35
+        battleStart = Date()
         let state = HeroIslandAttributes.ContentState(
             soulCount: souls,
             rage: rage,
-            headline: hero.skillName
+            headline: hero.skillName,
+            battleStart: battleStart
         )
 
         do {
@@ -317,7 +260,8 @@ struct ContentView: View {
         let state = HeroIslandAttributes.ContentState(
             soulCount: souls,
             rage: rage,
-            headline: selectedHero.skillName
+            headline: selectedHero.skillName,
+            battleStart: battleStart
         )
         await current.update(ActivityContent(state: state, staleDate: nil))
     }

@@ -10,6 +10,8 @@ struct HeroIslandAttributes: ActivityAttributes {
         var rage: Double
         /// 灵动岛展开区上方的状态文案
         var headline: String
+        /// 像素对决动画的时间原点，Widget 端据此自行推进动画
+        var battleStart: Date
     }
 
     var heroID: String
