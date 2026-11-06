@@ -1,0 +1,6 @@
+﻿{
+  "images" : [
+    { "filename" : "hero_storm_spirit.png", "idiom" : "universal" }
+  ],
+  "info" : { "author" : "xcode", "version" : 1 }
+}
