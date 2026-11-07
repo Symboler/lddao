@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Octo Island · Claw'd 灵动岛五幕预览</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--mm:3.7795px}
+  body{
+    font-family:-apple-system,"SF Pro Display","PingFang SC",sans-serif;
+    background:radial-gradient(ellipse at 50% -10%,#241030 0%,#06040A 62%,#010002 100%);
+    color:#fff;min-height:100vh;padding:26px 20px 70px;
+  }
+  .head{text-align:center;margin-bottom:20px}
+  .tag{font-size:10px;letter-spacing:4px;font-weight:800;color:#D97757}
+  h1{font-size:21px;font-weight:900;margin-top:8px;letter-spacing:.5px}
+  .sub{font-size:12px;opacity:.45;margin-top:6px}
+  .calib{max-width:780px;margin:0 auto 24px;display:flex;gap:20px;align-items:center;
+    padding:14px 18px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+  .cardRef{width:calc(85.6*var(--mm));height:calc(53.98*var(--mm));border-radius:calc(3.2*var(--mm));
+    background:linear-gradient(135deg,#2B2B33,#17171C);border:1px dashed rgba(217,119,87,.65);
+    flex:0 0 auto;display:flex;align-items:center;justify-content:center;text-align:center;
+    font-size:9px;color:rgba(255,255,255,.42);padding:6px;position:relative}
+  .calibCtrl{flex:1;min-width:250px}
+  .calibCtrl .t{font-size:12px;font-weight:700;margin-bottom:4px}
+  .calibCtrl .d{font-size:11px;opacity:.45;line-height:1.6;margin-bottom:9px}
+  input[type=range]{width:100%;accent-color:#D97757}
+  .calibVal{font-size:11px;opacity:.55;margin-top:5px;font-variant-numeric:tabular-nums}
+  .phone{width:calc(149.6*var(--mm));height:calc(71.5*var(--mm));margin:0 auto;border-radius:calc(12*var(--mm));
+    background:#0d0d10;box-shadow:0 0 0 1px #3a3a42 inset,0 0 0 calc(.6*var(--mm)) #54545e,0 22px 50px rgba(0,0,0,.65);
+    position:relative}
+  .screen{position:absolute;inset:calc(2.05*var(--mm));border-radius:calc(10*var(--mm));overflow:hidden;
+    background:radial-gradient(circle at 72% 10%,rgba(217,119,87,.25),transparent 40%),
+      radial-gradient(circle at 22% 88%,rgba(120,90,220,.22),transparent 52%),
+      linear-gradient(165deg,#141026 0%,#07060F 58%,#040308 100%)}
+  .statusbar{position:absolute;top:calc(1.4*var(--mm));left:0;right:0;display:flex;justify-content:space-between;
+    padding:0 calc(7*var(--mm));font-size:calc(3.6*var(--mm));font-weight:600;opacity:.8}
+  .islandWrap{position:absolute;left:50%;transform:translateX(-50%);top:calc(3.3*var(--mm));
+    display:flex;justify-content:center}
+  #island{background:#000;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.07);display:block}
+  #islandCanvas{display:block}
+  .lock{position:absolute;left:0;right:0;top:calc(30*var(--mm));text-align:center;pointer-events:none}
+  .lock .time{font-size:calc(15*var(--mm));font-weight:700;line-height:1}
+  .lock .date{font-size:calc(3.3*var(--mm));opacity:.45;margin-top:calc(.9*var(--mm))}
+  .zoomWrap{text-align:center;margin-top:34px}
+  .cap{font-size:11px;letter-spacing:2px;color:#D97757;font-weight:800;margin-bottom:12px}
+  #zoomIsland{display:inline-block;background:#000;overflow:hidden;border-radius:14px;
+    box-shadow:0 0 0 1px rgba(255,255,255,.09),0 12px 34px rgba(0,0,0,.6)}
+  #zoomCanvas{display:block}
+  .ctrl{max-width:780px;margin:26px auto 0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  button{font-family:inherit;font-size:12px;font-weight:700;padding:8px 15px;border-radius:9px;cursor:pointer;
+    color:#F0A081;background:rgba(217,119,87,.1);border:1px solid rgba(217,119,87,.35)}
+  button:hover{background:rgba(217,119,87,.22)}
+  button.on{background:#D97757;color:#140A06;border-color:#D97757}
+  .progressWrap{max-width:780px;margin:16px auto 0}
+  .track{height:4px;border-radius:2px;background:rgba(255,255,255,.1);position:relative;overflow:hidden}
+  .fill{position:absolute;left:0;top:0;bottom:0;background:#D97757;width:0}
+  .tlabel{display:flex;justify-content:space-between;font-size:10px;opacity:.45;margin-top:6px;font-variant-numeric:tabular-nums}
+  .acts{max-width:780px;margin:14px auto 0;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .act{font-size:10px;text-align:center;padding:7px 4px;border-radius:8px;cursor:pointer;
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.6)}
+  .act.cur{background:rgba(217,119,87,.22);border-color:rgba(217,119,87,.6);color:#fff}
+  .note{max-width:760px;margin:26px auto 0;font-size:11px;line-height:1.9;opacity:.45;text-align:center}
+  .note b{color:#D97757;opacity:.9}
+</style>
+</head>
+<body>
+  <div class="head">
+    <div class="tag">OCTO ISLAND · CLAW'D</div>
+    <h1>灵动岛五幕 · 真实物理尺寸</h1>
+    <div class="sub">Claw'd 像素螃蟹 · 17 秒完整循环 · 先校准再看</div>
+  </div>
+
+  <div class="calib">
+    <div class="cardRef">把银行卡贴这里比对</div>
+    <div class="calibCtrl">
+      <div class="t">屏幕校准</div>
+      <div class="d">拿一张真实银行卡（85.6 × 54 mm）横贴屏幕，拖滑块直到左侧虚线框与卡片同宽。校准后，手机与灵动岛即为真机物理尺寸。</div>
+      <input type="range" id="calib" min="50" max="200" step="0.5" value="100">
+      <div class="calibVal" id="calibVal"></div>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="screen">
+      <div class="statusbar"><span>9:41</span><span>▮▮▮ ⌁</span></div>
+      <div class="islandWrap">
+        <div id="island"><canvas id="islandCanvas"></canvas></div>
+      </div>
+      <div class="lock">
+        <div class="time">9:41</div>
+        <div class="date">11月7日 星期六</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zoomWrap">
+    <div class="cap">放大细节 · 检查像素</div>
+    <div id="zoomIsland"><canvas id="zoomCanvas"></canvas></div>
+  </div>
+
+  <div class="ctrl">
+    <button id="btnPlay" class="on">暂停</button>
+    <button id="btnReplay">重播</button>
+    <button id="btnCalib">恢复 100% 校准</button>
+  </div>
+
+  <div class="progressWrap">
+    <div class="track"><div class="fill" id="fill"></div></div>
+    <div class="tlabel"><span id="tNow">0.00s</span><span>17.0s 循环</span></div>
+  </div>
+
+  <div class="acts" id="acts">
+    <div class="act" data-t="0">① 巡逻</div>
+    <div class="act" data-t="3.1">② 打字</div>
+    <div class="act" data-t="7.7">③ 像素化</div>
+    <div class="act" data-t="8.2">④ 跑酷</div>
+    <div class="act" data-t="16.7">⑤ 收起</div>
+  </div>
+
+  <div class="note">
+    主角为 <b>Claw'd</b>——橙色像素螃蟹，不是章鱼。<br>
+    第三幕裂解、第四幕跑酷在真灵动岛无法实现（WidgetKit 不支持 SpriteKit），只能在 App 内呈现。
+  </div>
+
+  <script src="octo-island.js"></script>
+</body>
+</html>

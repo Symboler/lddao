@@ -5,106 +5,148 @@ import WidgetKit
 @main
 struct DotaIslandWidgetBundle: WidgetBundle {
     var body: some Widget {
-        HeroIslandLiveActivity()
+        CodeGenIslandLiveActivity()
     }
 }
 
-struct HeroIslandLiveActivity: Widget {
+struct CodeGenIslandLiveActivity: Widget {
     var body: some WidgetConfiguration {
-        ActivityConfiguration(for: HeroIslandAttributes.self) { context in
-            LockScreenParade(context: context)
-                .activityBackgroundTint(Color(hex: "0A070F"))
+        ActivityConfiguration(for: CodeGenIslandAttributes.self) { context in
+            LockScreenCard(context: context)
+                .activityBackgroundTint(Color.black)
                 .activitySystemActionForegroundColor(.white)
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.bottom) {
-                    ExpandedParade(context: context)
+                    ExpandedCode(context: context)
+                        .padding(.horizontal, 4)
+                        .padding(.bottom, 2)
                 }
             } compactLeading: {
-                MarchingView(selectedIDs: context.state.selectedIDs,
-                             startDate: context.state.walkStart, limit: 2)
-                .frame(width: 40, height: 34)
+                CompactLeading(context: context)
+                    .frame(width: 46, height: 33)
             } compactTrailing: {
-                VStack(spacing: 0) {
-                    Text("\(context.state.selectedIDs.count)")
-                        .font(.system(size: 16, weight: .heavy, design: .rounded))
-                        .foregroundStyle(Color(hex: context.attributes.accentHex))
-                        .contentTransition(.numericText())
-                    Text("HEROES")
-                        .font(.system(size: 7, weight: .bold))
-                        .tracking(1)
-                        .foregroundStyle(.white.opacity(0.45))
-                }
+                CompactTrailing(context: context)
             } minimal: {
-                Text("\(context.state.selectedIDs.count)")
-                    .font(.system(size: 14, weight: .heavy, design: .rounded))
-                    .foregroundStyle(Color(hex: context.attributes.accentHex))
+                MinimalBadge(context: context)
+                    .frame(width: 22, height: 22)
             }
-            .keylineTint(Color(hex: context.attributes.accentHex))
+            .keylineTint(SceneCol.orange)
         }
     }
 }
 
-// MARK: - 灵动岛展开区
+// MARK: - 紧凑态
 
-struct ExpandedParade: View {
-    let context: ActivityViewContext<HeroIslandAttributes>
+struct CompactLeading: View {
+    let context: ActivityViewContext<CodeGenIslandAttributes>
 
     var body: some View {
-        VStack(spacing: 4) {
-            ParadeView(selectedIDs: context.state.selectedIDs,
-                       startDate: context.state.walkStart)
-                .frame(height: 80)
-                .frame(maxWidth: .infinity)
-                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-
-            HStack(spacing: 6) {
-                Text("DOTA PARADE")
-                    .font(.system(size: 8, weight: .bold))
-                    .foregroundStyle(Color(hex: context.attributes.accentHex))
-                Text("\(context.state.selectedIDs.count) HEROES")
-                    .font(.system(size: 8, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.4))
-                Spacer(minLength: 4)
-                Text(context.state.headline)
-                    .font(.system(size: 8, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.6))
+        TimelineView(.periodic(from: context.state.startDate, by: 0.25)) { timeline in
+            let elapsed = timeline.date.timeIntervalSince(context.state.startDate)
+            Canvas { ctx, size in
+                CodeGenScene.badge(&ctx, size: size, t: elapsed)
             }
-            .padding(.horizontal, 2)
         }
-        .frame(height: 100)
-        .padding(.bottom, 2)
+        .clipped()
+        .allowsHitTesting(false)
+    }
+}
+
+struct CompactTrailing: View {
+    let context: ActivityViewContext<CodeGenIslandAttributes>
+
+    var body: some View {
+        TimelineView(.periodic(from: context.state.startDate, by: 0.25)) { timeline in
+            let elapsed = timeline.date.timeIntervalSince(context.state.startDate)
+            VStack(alignment: .trailing, spacing: 1) {
+                Text(context.state.status)
+                    .font(.system(size: 10, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.75)
+
+                HStack(spacing: 2) {
+                    ForEach(0..<3, id: \.self) { i in
+                        Circle()
+                            .fill(SceneCol.orange.opacity(0.35 + 0.5 * (0.5 + 0.5 * sin(elapsed * 4 - Double(i) * 0.9))))
+                            .frame(width: 2.5, height: 2.5)
+                    }
+                }
+            }
+        }
+        .allowsHitTesting(false)
+    }
+}
+
+struct MinimalBadge: View {
+    let context: ActivityViewContext<CodeGenIslandAttributes>
+
+    var body: some View {
+        TimelineView(.periodic(from: context.state.startDate, by: 0.5)) { timeline in
+            let elapsed = timeline.date.timeIntervalSince(context.state.startDate)
+            Canvas { ctx, size in
+                CodeGenScene.badge(&ctx, size: size, t: elapsed)
+            }
+        }
+        .clipped()
+        .allowsHitTesting(false)
+    }
+}
+
+// MARK: - 展开态
+
+struct ExpandedCode: View {
+    let context: ActivityViewContext<CodeGenIslandAttributes>
+
+    var body: some View {
+        TimelineView(.periodic(from: context.state.startDate, by: 0.2)) { timeline in
+            let elapsed = timeline.date.timeIntervalSince(context.state.startDate)
+            let t = elapsed.truncatingRemainder(dividingBy: CodeT.total)
+            Canvas { ctx, size in
+                CodeGenScene.expanded(&ctx, size: size, t: t)
+            }
+            .frame(height: 96)
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        }
+        .frame(height: 96)
     }
 }
 
 // MARK: - 锁屏卡片
 
-struct LockScreenParade: View {
-    let context: ActivityViewContext<HeroIslandAttributes>
+struct LockScreenCard: View {
+    let context: ActivityViewContext<CodeGenIslandAttributes>
 
     var body: some View {
-        VStack(spacing: 0) {
-            ParadeView(selectedIDs: context.state.selectedIDs,
-                       startDate: context.state.walkStart)
-                .frame(height: 90)
-                .frame(maxWidth: .infinity)
+        TimelineView(.periodic(from: context.state.startDate, by: 0.2)) { timeline in
+            let elapsed = timeline.date.timeIntervalSince(context.state.startDate)
+            let t = elapsed.truncatingRemainder(dividingBy: CodeT.total)
 
-            HStack(spacing: 8) {
-                Text("DOTA PARADE")
-                    .font(.system(size: 10, weight: .bold))
-                    .foregroundStyle(Color(hex: context.attributes.accentHex))
-                Text("\(context.state.selectedIDs.count) HEROES")
-                    .font(.system(size: 9, weight: .medium))
-                    .foregroundStyle(.white.opacity(0.4))
-                Spacer(minLength: 6)
-                Text(context.state.headline)
-                    .font(.system(size: 9, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.55))
+            VStack(spacing: 0) {
+                Canvas { ctx, size in
+                    CodeGenScene.expanded(&ctx, size: size, t: t)
+                }
+                .frame(height: 118)
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+
+                HStack(spacing: 8) {
+                    Text(context.state.status)
+                        .font(.system(size: 11, weight: .bold))
+                        .foregroundStyle(SceneCol.orange)
+                    Text(context.state.taskName)
+                        .font(.system(size: 10, weight: .medium, design: .monospaced))
+                        .foregroundStyle(.white.opacity(0.4))
+                    Spacer(minLength: 6)
+                    Text("Claw'd")
+                        .font(.system(size: 10, weight: .semibold))
+                        .foregroundStyle(.white.opacity(0.55))
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 11)
             }
-            .padding(.horizontal, 14)
-            .padding(.vertical, 11)
+            .frame(maxWidth: .infinity)
+            .background(Color.black)
         }
-        .frame(maxWidth: .infinity)
-        .background(Color(hex: "0A070F"))
     }
 }
