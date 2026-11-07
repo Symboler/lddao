@@ -164,7 +164,7 @@ extension CodeGenScene {
         let cx = st.x - cam
         let cy = groundY - 7 - st.y
         Clawd.draw(&inner, x: cx - 1, y: cy, u: 0.5,
-                   legPhase: gt * 14, blink: false,
+                   blink: false, legPhase: gt * 14,
                    armUp: st.y > 0 ? 0.8 : 0.2)
         // 安全帽
         PX.rect(&inner, cx - 1.5, cy - 2.5, 8, 2.5, SceneCol.brick)

@@ -275,8 +275,8 @@ enum CodeGenScene {
         let cy = y0 + Double(max(lastLine, 0)) * lh
         let thinking = t > CodeT.expandEnd + 2.4 && t < CodeT.expandEnd + 2.8
         Clawd.draw(&ctx, x: cx - 1, y: cy - 3, u: 0.72,
-                   face: 1, legPhase: thinking ? 0 : t * 22,
-                   blink: thinking, armUp: thinking ? 0 : 0.4)
+                   face: 1, blink: thinking, legPhase: thinking ? 0 : t * 22,
+                   armUp: thinking ? 0 : 0.4)
 
         // 进度条
         let prog = clamp((t - CodeT.expandEnd) / (CodeT.typingEnd - CodeT.expandEnd))
