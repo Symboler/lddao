@@ -1,0 +1,266 @@
+Command line invocation:
+    /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/xcodebuild -project LingDongDota.xcodeproj -scheme LingDongDota -configuration Release -sdk iphoneos -derivedDataPath /Users/runner/work/_temp/dd -archivePath /Users/runner/work/_temp/LingDongDota.xcarchive CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO DEVELOPMENT_TEAM= archive
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = 
+    CODE_SIGNING_ALLOWED = NO
+    CODE_SIGNING_REQUIRED = NO
+    DEVELOPMENT_TEAM = 
+    SDKROOT = iphoneos18.5
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Any iOS Device }
+{ platform:macOS, arch:arm64, variant:Designed for [iPad,iPhone], id:30a5b8e064bf885a8de43c8240eaf18dad6e1b42, name:My Mac }
+{ platform:iOS Simulator, id:dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder, name:Any iOS Simulator Device }
+note: Using codesigning identity override: 
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (2 targets)
+    Target 'LingDongDota' in project 'LingDongDota'
+        ➜ Explicit dependency on target 'DotaIslandWidget' in project 'LingDongDota'
+    Target 'DotaIslandWidget' in project 'LingDongDota' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/runner/work/lddao/lddao/LingDongDota/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 89d8ec473353508627ad22e5db129152
+Build description path: /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/XCBuildData/89d8ec473353508627ad22e5db129152.xcbuilddata
+CreateBuildDirectory /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/InstallationBuildProductsLocation
+    cd /Users/runner/work/lddao/lddao/LingDongDota.xcodeproj
+    builtin-create-build-directory /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/InstallationBuildProductsLocation
+
+ClangStatCache /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk /Users/runner/work/_temp/dd/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
+    cd /Users/runner/work/lddao/lddao/LingDongDota.xcodeproj
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -o /Users/runner/work/_temp/dd/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
+
+CreateBuildDirectory /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath
+    cd /Users/runner/work/lddao/lddao/LingDongDota.xcodeproj
+    builtin-create-build-directory /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath
+
+CreateBuildDirectory /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath
+    cd /Users/runner/work/lddao/lddao/LingDongDota.xcodeproj
+    builtin-create-build-directory /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota-deecebd04650ccc021413624e2628977-VFS-iphoneos/all-product-headers.yaml
+    cd /Users/runner/work/lddao/lddao/LingDongDota.xcodeproj
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota-deecebd04650ccc021413624e2628977-VFS-iphoneos/all-product-headers.yaml
+
+CreateBuildDirectory /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/EagerLinkingTBDs/Release-iphoneos
+    cd /Users/runner/work/lddao/lddao/LingDongDota.xcodeproj
+    builtin-create-build-directory /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/EagerLinkingTBDs/Release-iphoneos
+
+CreateBuildDirectory /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos
+    cd /Users/runner/work/lddao/lddao/LingDongDota.xcodeproj
+    builtin-create-build-directory /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/Objects-normal/arm64/LingDongDota_const_extract_protocols.json (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/Objects-normal/arm64/LingDongDota_const_extract_protocols.json
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/Objects-normal/arm64/LingDongDota.SwiftFileList (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/Objects-normal/arm64/LingDongDota.SwiftFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/Objects-normal/arm64/LingDongDota.SwiftConstValuesFileList (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/Objects-normal/arm64/LingDongDota.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/Objects-normal/arm64/LingDongDota.LinkFileList (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/Objects-normal/arm64/LingDongDota.LinkFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/Objects-normal/arm64/LingDongDota-OutputFileMap.json (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/Objects-normal/arm64/LingDongDota-OutputFileMap.json
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota.hmap (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota.DependencyStaticMetadataFileList (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota.DependencyMetadataFileList (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota-project-headers.hmap (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota-project-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota-own-target-headers.hmap (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota-generated-files.hmap (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota-generated-files.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota-all-target-headers.hmap (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota-all-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota-all-non-framework-target-headers.hmap (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/LingDongDota.build/LingDongDota-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget_const_extract_protocols.json (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget_const_extract_protocols.json
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget.SwiftFileList (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget.SwiftFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget.SwiftConstValuesFileList (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget.LinkFileList (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget.LinkFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget-OutputFileMap.json (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget-OutputFileMap.json
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget.hmap (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget.DependencyStaticMetadataFileList (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget.DependencyMetadataFileList (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-project-headers.hmap (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-project-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-own-target-headers.hmap (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-generated-files.hmap (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-generated-files.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-all-target-headers.hmap (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-all-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-all-non-framework-target-headers.hmap (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    write-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-all-non-framework-target-headers.hmap
+
+SymLink /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos/LingDongDota.app ../../InstallationBuildProductsLocation/Applications/LingDongDota.app (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    /bin/ln -sfh ../../InstallationBuildProductsLocation/Applications/LingDongDota.app /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos/LingDongDota.app
+
+MkDir /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/InstallationBuildProductsLocation/Applications/LingDongDota.app/PlugIns (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    /bin/mkdir -p /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/InstallationBuildProductsLocation/Applications/LingDongDota.app/PlugIns
+
+MkDir /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/InstallationBuildProductsLocation/Applications/LingDongDota.app (in target 'LingDongDota' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    /bin/mkdir -p /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/InstallationBuildProductsLocation/Applications/LingDongDota.app
+
+SymLink /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos/DotaIslandWidget.appex ../../IntermediateBuildFilesPath/UninstalledProducts/iphoneos/DotaIslandWidget.appex (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    /bin/ln -sfh ../../IntermediateBuildFilesPath/UninstalledProducts/iphoneos/DotaIslandWidget.appex /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos/DotaIslandWidget.appex
+
+MkDir /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/DotaIslandWidget.appex (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    /bin/mkdir -p /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/DotaIslandWidget.appex
+
+MkDir /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_output/unthinned (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    /bin/mkdir -p /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_output/unthinned
+
+MkDir /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_output/thinned (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    /bin/mkdir -p /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_output/thinned
+
+GenerateAssetSymbols /Users/runner/work/lddao/lddao/DotaIslandWidget/Assets.xcassets (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool /Users/runner/work/lddao/lddao/DotaIslandWidget/Assets.xcassets --compile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/DotaIslandWidget.appex --output-format human-readable-text --notices --warnings --export-dependency-info /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_dependencies --output-partial-info-plist /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_generated_info.plist --accent-color AccentColor --compress-pngs --enable-on-demand-resources NO --standalone-icon-behavior all --development-region en --target-device iphone --minimum-deployment-target 17.0 --platform iphoneos --bundle-identifier com.lingdong.dotaisland.widget --generate-swift-asset-symbol-extensions NO --generate-swift-asset-symbols /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources/GeneratedAssetSymbols.swift --generate-objc-asset-symbols /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources/GeneratedAssetSymbols.h --generate-asset-symbol-index /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/* com.apple.actool.compilation-results */
+/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources/GeneratedAssetSymbols.h
+/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources/GeneratedAssetSymbols.swift
+
+
+CompileAssetCatalogVariant thinned /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/DotaIslandWidget.appex /Users/runner/work/lddao/lddao/DotaIslandWidget/Assets.xcassets (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool /Users/runner/work/lddao/lddao/DotaIslandWidget/Assets.xcassets --compile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_generated_info.plist_thinned --accent-color AccentColor --compress-pngs --enable-on-demand-resources NO --standalone-icon-behavior all --development-region en --target-device iphone --minimum-deployment-target 17.0 --platform iphoneos
+/* com.apple.actool.compilation-results */
+/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_generated_info.plist_thinned
+/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_output/thinned/Assets.car
+
+
+SwiftDriver DotaIslandWidget normal arm64 com.apple.xcode.tools.swift.compiler (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    builtin-SwiftDriver -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name DotaIslandWidget -O -whole-module-optimization -enforce-exclusivity\=checked @/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget.SwiftFileList -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Users/runner/work/_temp/dd/ModuleCache.noindex -Xfrontend -serialize-debugging-options -application-extension -swift-version 5 -I /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos -F /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos -emit-localized-strings -emit-localized-strings-path /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64 -c -num-threads 3 -Xcc -ivfsstatcache -Xcc /Users/runner/work/_temp/dd/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -output-file-map /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/_temp/dd/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-generated-files.hmap -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-own-target-headers.hmap -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-project-headers.hmap -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos/include -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources -emit-objc-header -emit-objc-header-path /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget-Swift.h -working-directory /Users/runner/work/lddao/lddao -no-emit-module-separately-wmo
+
+SwiftCompile normal arm64 Compiling\ ClawdArt.swift,\ CodeGenGame.swift,\ CodeGenIslandAttributes.swift,\ CodeGenScenes.swift,\ HeroIslandLiveActivity.swift,\ PixelKit.swift,\ GeneratedAssetSymbols.swift /Users/runner/work/lddao/lddao/Shared/ClawdArt.swift /Users/runner/work/lddao/lddao/Shared/CodeGenGame.swift /Users/runner/work/lddao/lddao/Shared/CodeGenIslandAttributes.swift /Users/runner/work/lddao/lddao/Shared/CodeGenScenes.swift /Users/runner/work/lddao/lddao/DotaIslandWidget/HeroIslandLiveActivity.swift /Users/runner/work/lddao/lddao/Shared/PixelKit.swift /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'DotaIslandWidget' from project 'LingDongDota')
+CompileSwift normal arm64 (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    
+/Users/runner/work/lddao/lddao/Shared/CodeGenGame.swift:167:39: error: argument 'blink' must precede argument 'legPhase'
+                   legPhase: gt * 14, blink: false,
+                   ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+                   blink: false,    
+/Users/runner/work/lddao/lddao/Shared/CodeGenScenes.swift:279:20: error: argument 'blink' must precede argument 'legPhase'
+                   blink: thinking, armUp: thinking ? 0 : 0.4)
+~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+
+Failed frontend command:
+/Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-frontend -frontend -c /Users/runner/work/lddao/lddao/Shared/ClawdArt.swift /Users/runner/work/lddao/lddao/Shared/CodeGenGame.swift /Users/runner/work/lddao/lddao/Shared/CodeGenIslandAttributes.swift /Users/runner/work/lddao/lddao/Shared/CodeGenScenes.swift /Users/runner/work/lddao/lddao/DotaIslandWidget/HeroIslandLiveActivity.swift /Users/runner/work/lddao/lddao/Shared/PixelKit.swift /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources/GeneratedAssetSymbols.swift -supplementary-output-file-map /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/supplementaryOutputs-1 -emit-localized-strings -emit-localized-strings-path /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64 -target arm64-apple-ios17.0 -Xllvm -aarch64-use-tbi -enable-objc-interop -stack-check -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -I /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos -F /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos -no-color-diagnostics -application-extension -g -debug-info-format\=dwarf -dwarf-version\=4 -module-cache-path /Users/runner/work/_temp/dd/ModuleCache.noindex -swift-version 5 -enforce-exclusivity\=checked -O -serialize-debugging-options -const-gather-protocols-file /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget_const_extract_protocols.json -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file /Users/runner/work/_temp/dd/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /Users/runner/work/lddao/lddao -resource-dir /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift -file-compilation-dir /Users/runner/work/lddao/lddao -Xcc -ivfsstatcache -Xcc /Users/runner/work/_temp/dd/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/swift-overrides.hmap -Xcc -iquote -Xcc /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-generated-files.hmap -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-own-target-headers.hmap -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-project-headers.hmap -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos/include -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources -module-name DotaIslandWidget -frontend-parseable-output -disable-clang-spi -target-sdk-version 18.5 -target-sdk-name iphoneos18.5 -external-plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/swift/host/plugins\#/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server -external-plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/local/lib/swift/host/plugins\#/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/swift-plugin-server -in-process-plugin-server-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins -plugin-path /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/local/lib/swift/host/plugins -enable-default-cmo -num-threads 3 -o /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/ClawdArt.o -o /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/CodeGenGame.o -o /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/CodeGenIslandAttributes.o -o /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/CodeGenScenes.o -o /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/HeroIslandLiveActivity.o -o /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/PixelKit.o -o /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/GeneratedAssetSymbols.o -index-unit-output-path /LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/ClawdArt.o -index-unit-output-path /LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/CodeGenGame.o -index-unit-output-path /LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/CodeGenIslandAttributes.o -index-unit-output-path /LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/CodeGenScenes.o -index-unit-output-path /LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/HeroIslandLiveActivity.o -index-unit-output-path /LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/PixelKit.o -index-unit-output-path /LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/GeneratedAssetSymbols.o
+SwiftDriver\ Compilation DotaIslandWidget normal arm64 com.apple.xcode.tools.swift.compiler (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    builtin-Swift-Compilation -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name DotaIslandWidget -O -whole-module-optimization -enforce-exclusivity\=checked @/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget.SwiftFileList -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Users/runner/work/_temp/dd/ModuleCache.noindex -Xfrontend -serialize-debugging-options -application-extension -swift-version 5 -I /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos -F /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos -emit-localized-strings -emit-localized-strings-path /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64 -c -num-threads 3 -Xcc -ivfsstatcache -Xcc /Users/runner/work/_temp/dd/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -output-file-map /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/runner/work/_temp/dd/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-generated-files.hmap -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-own-target-headers.hmap -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DotaIslandWidget-project-headers.hmap -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/BuildProductsPath/Release-iphoneos/include -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources -emit-objc-header -emit-objc-header-path /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/Objects-normal/arm64/DotaIslandWidget-Swift.h -working-directory /Users/runner/work/lddao/lddao -no-emit-module-separately-wmo
+
+LinkAssetCatalog /Users/runner/work/lddao/lddao/DotaIslandWidget/Assets.xcassets (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    builtin-linkAssetCatalog --thinned /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_output/thinned --thinned-dependencies /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_generated_info.plist_thinned --unthinned /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_output/unthinned --unthinned-dependencies /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_generated_info.plist_unthinned --output /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/DotaIslandWidget.appex --plist-output /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_generated_info.plist
+note: Emplaced /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/DotaIslandWidget.appex/Assets.car (in target 'DotaIslandWidget' from project 'LingDongDota')
+
+ProcessInfoPlistFile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/DotaIslandWidget.appex/Info.plist /Users/runner/work/lddao/lddao/DotaIslandWidget/Info.plist (in target 'DotaIslandWidget' from project 'LingDongDota')
+    cd /Users/runner/work/lddao/lddao
+    builtin-infoPlistUtility /Users/runner/work/lddao/lddao/DotaIslandWidget/Info.plist -producttype com.apple.product-type.app-extension -expandbuildsettings -format binary -platform iphoneos -additionalcontentfile /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/assetcatalog_generated_info.plist -requiredArchitecture arm64 -o /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/DotaIslandWidget.appex/Info.plist
+
+note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'LingDongDota' from project 'LingDongDota')
+note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'DotaIslandWidget' from project 'LingDongDota')
+** ARCHIVE FAILED **
+
+
+The following build commands failed:
+	CompileSwift normal arm64 (in target 'DotaIslandWidget' from project 'LingDongDota')
+	SwiftCompile normal arm64 Compiling\ ClawdArt.swift,\ CodeGenGame.swift,\ CodeGenIslandAttributes.swift,\ CodeGenScenes.swift,\ HeroIslandLiveActivity.swift,\ PixelKit.swift,\ GeneratedAssetSymbols.swift /Users/runner/work/lddao/lddao/Shared/ClawdArt.swift /Users/runner/work/lddao/lddao/Shared/CodeGenGame.swift /Users/runner/work/lddao/lddao/Shared/CodeGenIslandAttributes.swift /Users/runner/work/lddao/lddao/Shared/CodeGenScenes.swift /Users/runner/work/lddao/lddao/DotaIslandWidget/HeroIslandLiveActivity.swift /Users/runner/work/lddao/lddao/Shared/PixelKit.swift /Users/runner/work/_temp/dd/Build/Intermediates.noindex/ArchiveIntermediates/LingDongDota/IntermediateBuildFilesPath/LingDongDota.build/Release-iphoneos/DotaIslandWidget.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'DotaIslandWidget' from project 'LingDongDota')
+	Archiving project LingDongDota with scheme LingDongDota
+(3 failures)
