@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHADOWRAZE ×3 · 像素对决预览</title>
+<title>DOTA PARADE · 灵动岛走秀预览</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -15,565 +15,320 @@
     flex-direction: column;
     align-items: center;
     padding: 36px 20px 60px;
-    overflow-x: hidden;
   }
-  .tag {
-    font-size: 10px;
-    letter-spacing: 4px;
-    font-weight: 800;
-    color: #E8663A;
-    margin-bottom: 10px;
-  }
-  h1 {
-    font-size: 26px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 6px;
-  }
-  .subtitle {
-    font-size: 12px;
-    opacity: 0.45;
-    margin-bottom: 28px;
-    letter-spacing: 0.5px;
-  }
+  .tag { font-size: 10px; letter-spacing: 4px; font-weight: 800; color: #E8663A; margin-bottom: 10px; }
+  h1 { font-size: 26px; font-weight: 900; letter-spacing: 2px; margin-bottom: 6px; }
+  .subtitle { font-size: 12px; opacity: 0.45; margin-bottom: 28px; }
 
-  /* 大舞台 */
-  .battle-window {
-    position: relative;
-    width: min(760px, 92vw);
-    aspect-ratio: 200 / 112;
-    border-radius: 4px;
-    overflow: hidden;
-    background: #0B0611;
-    box-shadow:
-      0 0 0 2px #2A2030,
-      0 0 0 6px #100A18,
-      0 24px 70px rgba(0,0,0,0.85),
-      0 0 90px rgba(138,59,224,0.18);
+  /* 手机外框 */
+  .phone {
+    width: min(390px, 92vw);
+    background: #0a0a0c;
+    border-radius: 48px;
+    padding: 14px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 0 2px #222 inset;
+    margin-bottom: 18px;
   }
-  .battle-window canvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
-  }
-  .scanlines {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-      to bottom,
-      rgba(0,0,0,0) 0px,
-      rgba(0,0,0,0) 2px,
-      rgba(0,0,0,0.16) 3px,
-      rgba(0,0,0,0.16) 4px
-    );
-  }
-
-  .kill-overlay {
-    position: absolute;
-    left: 50%;
-    top: 18%;
-    transform: translate(-50%, 0) scale(0.85);
-    font-size: clamp(22px, 5vw, 44px);
-    font-weight: 900;
-    letter-spacing: 8px;
-    color: #FFD65A;
-    text-shadow:
-      0 0 0 #7A2418,
-      3px 3px 0 #7A2418,
-      -2px -2px 0 rgba(255,255,255,0.25),
-      0 0 26px rgba(255,138,61,0.9);
-    opacity: 0;
-    transition: none;
-    pointer-events: none;
-    font-family: monospace;
-  }
-  .kill-overlay.show {
-    animation: killPop 1.1s steps(3, end);
-  }
-  @keyframes killPop {
-    0%   { opacity: 0; transform: translate(-50%, 10px) scale(1.6); }
-    18%  { opacity: 1; transform: translate(-50%, 0) scale(0.9); }
-    80%  { opacity: 1; transform: translate(-50%, 0) scale(1); }
-    100% { opacity: 0; transform: translate(-50%, -8px) scale(1); }
-  }
-
-  /* 控制条 */
-  .controls {
+  .screen {
+    background: linear-gradient(180deg, #1a0f24 0%, #0a0610 100%);
+    border-radius: 36px;
+    padding: 14px 0 10px;
+    min-height: 120px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
-    margin-top: 18px;
-    margin-bottom: 44px;
+    position: relative;
   }
-  button {
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    padding: 10px 18px;
-    border-radius: 6px;
-    border: 2px solid #E8663A;
-    background: #E8663A;
-    color: #0A070F;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  button:hover { background: transparent; color: #E8663A; }
-  .loop-hint {
-    font-size: 11px;
-    opacity: 0.35;
-    letter-spacing: 0.5px;
-  }
-
-  /* 灵动岛模拟 */
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    font-weight: 800;
-    opacity: 0.4;
-    margin-bottom: 16px;
-  }
-  .island-stage { perspective: 900px; }
+  /* 灵动岛 */
   .island {
     background: #000;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.45s cubic-bezier(0.32, 0.72, 0, 1);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 14px 40px rgba(0,0,0,0.7);
-  }
-  .island.compact {
-    width: 132px; height: 38px;
     border-radius: 22px;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 12px;
-  }
-  .island.expanded {
-    width: min(380px, 92vw);
-    height: 132px;
-    border-radius: 46px;
-  }
-  .island::before {
-    content: "";
-    position: absolute;
-    top: 13px; left: 50%;
-    transform: translateX(-50%);
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: #0A0A0A;
-    z-index: 3;
-  }
-  .compact-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-  .island.expanded .compact-inner { display: none; }
-  .expanded-inner { display: none; width: 100%; height: 100%; }
-  .island.expanded .expanded-inner { display: block; }
-  .mini-avatar {
-    width: 24px; height: 24px;
-    border-radius: 3px;
+    padding: 3px 10px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
     overflow: hidden;
-    border: 1px solid #E8663A;
-    box-shadow: 0 0 8px rgba(232,102,58,0.7);
   }
-  .mini-avatar img { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; }
-  .mini-souls { font-size: 13px; font-weight: 900; color: #E8663A; font-variant-numeric: tabular-nums; }
-  .mini-canvas {
-    width: 200px; height: 112px;
-    display: block;
-    margin: 10px auto 0;
-    image-rendering: pixelated;
+  .island.compact { width: 134px; height: 38px; }
+  .island.expanded {
+    width: 100%;
+    height: 128px;
+    border-radius: 40px;
+    flex-direction: column;
+    padding: 8px;
   }
-  .island-caption {
-    margin-top: 16px;
-    font-size: 11px;
-    opacity: 0.35;
-    text-align: center;
-    line-height: 1.7;
-    max-width: 420px;
+  .compact-row {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; gap: 6px;
   }
+  .island.expanded .compact-row { display: none; }
+  .expanded-area { display: none; width: 100%; height: 100%; flex-direction: column; }
+  .island.expanded .expanded-area { display: flex; }
+  .cam-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #0a0a0a; margin: 0 4px;
+  }
+  .lead-canvas { width: 42px; height: 32px; image-rendering: pixelated; }
+  .trail-count {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #E8663A; line-height: 1;
+  }
+  .trail-count .n { font-size: 15px; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .trail-count .l { font-size: 6px; letter-spacing: 1px; opacity: 0.5; margin-top: 2px; color: #fff; }
+  .parade-canvas {
+    width: 100%; height: 86px; image-rendering: pixelated;
+    border-radius: 14px;
+  }
+  .parade-caption {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 6px 6px 0;
+  }
+  .parade-caption .t { font-size: 9px; font-weight: 800; letter-spacing: 1px; color: #E8663A; }
+  .parade-caption .c { font-size: 9px; opacity: 0.5; }
+  .hint { font-size: 11px; opacity: 0.35; margin-top: 14px; text-align: center; line-height: 1.7; max-width: 380px; }
+
+  /* 角色选择 */
+  .picker { margin-top: 28px; width: min(560px, 92vw); }
+  .picker h3 { font-size: 11px; letter-spacing: 2px; opacity: 0.5; margin-bottom: 12px; font-weight: 800; }
+  .char-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .char-card {
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 10px 6px 8px;
+    cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    transition: all 0.15s;
+  }
+  .char-card.active { border-color: var(--accent, #E8663A); background: color-mix(in srgb, var(--accent,#E8663A) 18%, transparent); }
+  .char-card canvas { width: 44px; height: 44px; image-rendering: pixelated; }
+  .char-card .n { font-size: 11px; font-weight: 700; }
 </style>
 </head>
 <body>
-  <div class="tag">SHADOWRAZE × 3 · PIXEL DUEL</div>
-  <h1>影魔 · 三连影压</h1>
-  <div class="subtitle">左侧影魔 SHADOW FIEND　VS　右侧神灵武士 HUSKAR</div>
+  <div class="tag">DOTA PARADE · DYNAMIC ISLAND</div>
+  <h1>灵动岛 · 英雄走秀</h1>
+  <div class="subtitle">紧凑态原地踏步 · 展开态横向走秀</div>
 
-  <div class="battle-window">
-    <canvas id="bigStage" width="200" height="112"></canvas>
-    <div class="scanlines"></div>
-    <div class="kill-overlay" id="killOverlay">KILL</div>
-  </div>
-
-  <div class="controls">
-    <button id="replayBtn">重新播放</button>
-    <span class="loop-hint">每 3.6 秒循环一次</span>
-  </div>
-
-  <div class="section-label">DYNAMIC ISLAND · 灵动岛展开预览</div>
-  <div class="island-stage">
-    <div class="island compact" id="island">
-      <div class="compact-inner">
-        <div class="mini-avatar"><img src="preview-assets/hero_nevermore.png" alt=""></div>
-        <div class="mini-souls" id="miniSouls">0</div>
-      </div>
-      <div class="expanded-inner">
-        <canvas class="mini-canvas" id="miniStage" width="200" height="112"></canvas>
+  <div class="phone">
+    <div class="screen">
+      <div class="island compact" id="island">
+        <div class="compact-row">
+          <canvas class="lead-canvas" id="leadCanvas" width="40" height="34"></canvas>
+          <div class="cam-dot"></div>
+          <div class="trail-count">
+            <span class="n" id="countN">4</span>
+            <span class="l">HEROES</span>
+          </div>
+        </div>
+        <div class="expanded-area">
+          <canvas class="parade-canvas" id="paradeCanvas" width="200" height="80"></canvas>
+          <div class="parade-caption">
+            <span class="t">DOTA PARADE</span>
+            <span class="c" id="capCount">4 HEROES MARCHING</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="island-caption">点击灵动岛可展开 / 收起。真机上长按灵动岛即可看到这段像素战斗动画。</div>
+
+  <div class="hint" id="islandHint">点击灵动岛展开 / 收起。真机上紧凑态角色原地踏步，长按展开看完整走秀。</div>
+
+  <div class="picker">
+    <h3>选择出场角色</h3>
+    <div class="char-grid" id="charGrid"></div>
+  </div>
 
 <script>
-const DW = 200, DH = 112;
-const PERIOD = 3.6;
+// ============ 角色数据 ============
+const CHARS = {
+  nevermore: { id:'nevermore', name:'影魔', en:'SHADOW FIEND', accent:'#E8663A', glow:'#8A3BE0',
+    skin:'#2A1735', hair:'#E8663A', outfit:'#241030', outfitDark:'#150A1C', accent2:'#8A3BE0', eye:'#FF8A4C',
+    hasHorns:true, hasMask:false, hasHat:false, weapon:'orb', hairLong:false },
+  juggernaut: { id:'juggernaut', name:'剑圣', en:'JUGGERNAUT', accent:'#F2C14E', glow:'#E0432A',
+    skin:'#C9A87C', hair:'#F2C14E', outfit:'#B9C0C8', outfitDark:'#6A727C', accent2:'#E0432A', eye:'#FFFFFF',
+    hasHorns:false, hasMask:true, hasHat:false, weapon:'sword', hairLong:false },
+  lina: { id:'lina', name:'丽娜', en:'LINA', accent:'#FF6B2B', glow:'#FFD65A',
+    skin:'#F0C8A0', hair:'#E8663A', outfit:'#C23A22', outfitDark:'#8F1B12', accent2:'#FFD65A', eye:'#2A0E08',
+    hasHorns:false, hasMask:false, hasHat:false, weapon:'orb', hairLong:true },
+  crystal_maiden: { id:'crystal_maiden', name:'水晶室女', en:'CRYSTAL MAIDEN', accent:'#7FC8FF', glow:'#3A6FB0',
+    skin:'#F0D8C8', hair:'#A8D8FF', outfit:'#5A8FC7', outfitDark:'#2E5A8C', accent2:'#C8E8FF', eye:'#1A3A5A',
+    hasHorns:false, hasMask:false, hasHat:true, weapon:'staff', hairLong:true }
+};
+const ORDER = ['nevermore','juggernaut','lina','crystal_maiden'];
 
-// 三发影压时间轴
-const RAZES = [
-  { start: 0.42, hit: 0.86, ty: 56, txs: 146 },
-  { start: 1.08, hit: 1.52, ty: 68, txs: 146 },
-  { start: 1.74, hit: 2.18, ty: 80, txs: 146 }
-];
-
-const NEV_X = 46;   // 影魔脚底中心
-const HUS_X = 148;  // 神灵武士脚底中心
-const GROUND_Y = 92;
-
-let timeOrigin = performance.now();
-
+// ============ 绘制工具 ============
 function px(ctx, x, y, w, h, color) {
   ctx.fillStyle = color;
   ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
 }
 
-function drawBackground(ctx) {
-  // 夜空
-  px(ctx, 0, 0, DW, DH, '#0B0611');
-  // 远处魂火雾气
-  px(ctx, 0, 40, DW, 30, '#130A1C');
-  // 远山剪影
-  const hills = [[10,74,30,12], [40,68,34,18], [78,72,26,14], [120,66,36,20], [160,73,30,13], [186,70,16,16]];
-  hills.forEach(([x,y,w,h]) => px(ctx, x, y, w, h, '#170D22'));
-  // 地面
-  px(ctx, 0, GROUND_Y - 2, DW, DH - GROUND_Y + 2, '#14101C');
-  px(ctx, 0, GROUND_Y - 2, DW, 1, '#3A2C48');
-  // 地面碎石
-  const stones = [[18,96], [34,102], [62,98], [88,104], [112,97], [170,101], [188,96], [72,88], [130,90]];
-  stones.forEach(([x,y]) => px(ctx, x, y, 3, 2, '#241833'));
-  // 血迹
-  px(ctx, HUS_X - 14, GROUND_Y - 1, 26, 1, '#4A1410');
-  // 左侧石柱
-  px(ctx, 8, 58, 5, 34, '#1E1529');
-  px(ctx, 7, 56, 7, 3, '#2A2038');
-  // 右侧枯树
-  px(ctx, 186, 54, 3, 38, '#1E1529');
-  px(ctx, 180, 58, 6, 2, '#1E1529');
-  px(ctx, 189, 62, 7, 2, '#1E1529');
-}
+function drawChar(ctx, char, x, groundY, frame) {
+  const isForward = frame === 0 || frame === 2;
+  const bodyBob = isForward ? 1 : 0;
+  const leftLegDX = frame === 0 ? -1 : (frame === 2 ? 1 : 0);
+  const rightLegDX = frame === 0 ? 1 : (frame === 2 ? -1 : 0);
+  const leftArmDX = frame === 0 ? 1 : (frame === 2 ? -1 : 0);
+  const rightArmDX = frame === 0 ? -1 : (frame === 2 ? 1 : 0);
+  const by = groundY + bodyBob;
 
-function drawShadowFiend(ctx, charge) {
-  const x = NEV_X;
-  const bob = charge ? -1 : 0;
-  const y = GROUND_Y + bob;
+  px(ctx, x - 5, groundY, 10, 1, 'rgba(0,0,0,0.35)');
 
-  // 影子
-  px(ctx, x - 14, GROUND_Y - 1, 28, 2, '#000000');
+  // legs
+  px(ctx, x - 3 + leftLegDX, groundY - 4, 2, 4, char.outfitDark);
+  px(ctx, x + 1 + rightLegDX, groundY - 4, 2, 4, char.outfitDark);
+  px(ctx, x - 4 + leftLegDX, groundY - 1, 3, 1, '#120818');
+  px(ctx, x + 1 + rightLegDX, groundY - 1, 3, 1, '#120818');
 
-  // 腿
-  px(ctx, x - 9, y - 12, 6, 12, '#1A0E20');
-  px(ctx, x + 3, y - 12, 6, 12, '#1A0E20');
-  // 脚
-  px(ctx, x - 11, y - 2, 8, 2, '#120818');
-  px(ctx, x + 3, y - 2, 9, 2, '#120818');
+  // body
+  px(ctx, x - 4, by - 9, 8, 5, char.outfit);
+  px(ctx, x - 4, by - 9, 8, 1, char.outfitDark);
+  px(ctx, x - 4, by - 5, 8, 1, char.outfitDark);
 
-  // 身体
-  px(ctx, x - 10, y - 32, 20, 21, '#241030');
-  px(ctx, x - 10, y - 32, 20, 2, '#321845');
-  // 胸口魂纹
-  px(ctx, x - 6, y - 27, 12, 2, '#E8663A');
-  px(ctx, x - 4, y - 24, 8, 2, '#B84A2A');
-  px(ctx, x - 7, y - 21, 14, 1, '#8A3BE0');
-  // 腰部
-  px(ctx, x - 10, y - 13, 20, 2, '#150A1C');
+  // arms
+  px(ctx, x - 5 + leftArmDX, by - 8, 2, 4, char.outfit);
+  px(ctx, x + 3 + rightArmDX, by - 8, 2, 4, char.outfit);
+  px(ctx, x - 5 + leftArmDX, by - 5, 2, 1, char.skin);
+  px(ctx, x + 3 + rightArmDX, by - 5, 2, 1, char.skin);
 
-  // 头
-  px(ctx, x - 7, y - 45, 14, 13, '#1A0E20');
-  px(ctx, x - 7, y - 45, 14, 2, '#2A1735');
-  // 双角
-  px(ctx, x - 9, y - 52, 3, 7, '#E8663A');
-  px(ctx, x - 10, y - 54, 2, 3, '#FF8A4C');
-  px(ctx, x + 6, y - 52, 3, 7, '#E8663A');
-  px(ctx, x + 8, y - 54, 2, 3, '#FF8A4C');
-  // 眼睛
-  px(ctx, x - 5, y - 41, 3, 2, '#FF8A4C');
-  px(ctx, x + 2, y - 41, 3, 2, '#FF8A4C');
-  // 口部魂焰
-  px(ctx, x - 2, y - 36, 4, 1, '#E8663A');
+  // head
+  const hx = x - 3, hy = by - 16;
+  px(ctx, hx, hy, 7, 7, char.skin);
+  px(ctx, hx, hy, 7, 1, char.skin);
+  // eyes
+  px(ctx, hx + 1, hy + 3, 1, 1, char.eye);
+  px(ctx, hx + 4, hy + 3, 1, 1, char.eye);
 
-  // 前伸的手臂
-  px(ctx, x + 8, y - 29, 11, 4, '#2A1836');
-  px(ctx, x + 8, y - 29, 3, 4, '#321845');
-
-  // 手掌 + 蓄力光球
-  const palmX = x + 19, palmY = y - 31;
-  px(ctx, palmX, palmY, 5, 7, '#1A0E20');
-  if (charge) {
-    px(ctx, palmX + 2, palmY + 1, 5, 5, '#8A3BE0');
-    px(ctx, palmX + 3, palmY + 2, 3, 3, '#C77CFF');
-    px(ctx, palmX + 4, palmY + 3, 1, 1, '#FFFFFF');
-    // 光晕
-    px(ctx, palmX - 2, palmY - 2, 11, 11, 'rgba(138,59,224,0.25)');
-  }
-}
-
-function drawHuskar(ctx, hp, flash, recoil) {
-  if (hp <= 0) return;
-  const x = HUS_X - recoil;
-  const y = GROUND_Y;
-
-  // 影子
-  px(ctx, x - 13, GROUND_Y - 1, 26, 2, '#000000');
-
-  // 腿
-  px(ctx, x - 6, y - 11, 5, 11, '#7A2418');
-  px(ctx, x + 2, y - 11, 5, 11, '#7A2418');
-  px(ctx, x - 8, y - 2, 7, 2, '#5A1A10');
-  px(ctx, x + 2, y - 2, 8, 2, '#5A1A10');
-
-  // 身体
-  px(ctx, x - 8, y - 30, 16, 20, '#C23A22');
-  px(ctx, x - 8, y - 30, 16, 2, '#E45A38');
-  // 腰带
-  px(ctx, x - 8, y - 13, 16, 2, '#F2C14E');
-  // 胸口纹路
-  px(ctx, x - 4, y - 25, 8, 2, '#8F1B12');
-
-  // 头
-  px(ctx, x - 5, y - 40, 10, 10, '#E9A07A');
-  // 头巾
-  px(ctx, x - 6, y - 41, 12, 3, '#8F1B12');
-  px(ctx, x - 6, y - 38, 2, 4, '#8F1B12');
-  // 眼睛
-  px(ctx, x - 3, y - 36, 2, 1, '#2A0E08');
-  px(ctx, x + 1, y - 36, 2, 1, '#2A0E08');
-
-  // 双手斧
-  const axeSide = (sx) => {
-    px(ctx, sx, y - 26, 2, 10, '#6B4A2A');
-    px(ctx, sx - 3, y - 30, 8, 4, '#B9C0C8');
-    px(ctx, sx - 4, y - 28, 2, 5, '#8A909A');
-  };
-  axeSide(x - 13);
-  axeSide(x + 11);
-
-  // 受击闪白
-  if (flash > 0) {
-    px(ctx, x - 9, y - 42, 18, 32, `rgba(255,255,255,${Math.min(flash, 0.85)})`);
-  }
-
-  // 血条
-  const bw = 44, bx = HUS_X - bw / 2 - recoil, by = y - 52;
-  px(ctx, bx - 1, by - 1, bw + 2, 7, '#0A070F');
-  px(ctx, bx, by, bw, 5, '#3A1010');
-  const fill = Math.max(hp, 0);
-  px(ctx, bx, by, Math.round(bw * fill / 100), 5, '#E0432A');
-  px(ctx, bx, by, Math.round(bw * fill / 100), 1, '#FF7A50');
-  // 血量数字
-  ctx.fillStyle = '#FFFFFF';
-  ctx.font = '5px monospace';
-  ctx.fillText(String(hp), bx + bw + 3, by + 5);
-}
-
-function drawRazeBolt(ctx, sx, sy, tx, ty, progress) {
-  if (progress < 0 || progress > 1) return;
-  const x = sx + (tx - sx) * progress;
-  const y = sy + (ty - sy) * progress;
-
-  // 拖尾粒子
-  for (let i = 1; i <= 7; i++) {
-    const p = Math.max(progress - i * 0.055, 0);
-    const tx2 = sx + (tx - sx) * p;
-    const ty2 = sy + (ty - sy) * p;
-    const size = Math.max(1, 5 - i);
-    const alpha = 0.75 - i * 0.1;
-    px(ctx, tx2 - size / 2, ty2 - size / 2, size, size, `rgba(138,59,224,${alpha})`);
-    px(ctx, tx2 - size / 2 + 1, ty2 - size / 2 + 1, size - 2, size - 2, `rgba(232,102,58,${alpha * 0.7})`);
-  }
-
-  // 弹体：黑核 + 紫环 + 橙边
-  px(ctx, x - 5, y - 5, 10, 10, '#0E0518');
-  px(ctx, x - 4, y - 4, 8, 8, '#8A3BE0');
-  px(ctx, x - 3, y - 3, 6, 6, '#C77CFF');
-  px(ctx, x - 2, y - 2, 4, 4, '#E8663A');
-  px(ctx, x - 1, y - 1, 2, 2, '#FFFFFF');
-
-  // 外圈像素环
-  for (let i = 0; i < 12; i++) {
-    const a = (i / 12) * Math.PI * 2;
-    px(ctx, x + Math.cos(a) * 9 - 1, y + Math.sin(a) * 9 - 1, 2, 2, i % 2 ? '#8A3BE0' : '#E8663A');
-  }
-}
-
-function drawImpact(ctx, x, y, age) {
-  if (age < 0 || age > 0.38) return;
-  const p = age / 0.38;
-  const r = 4 + p * 16;
-
-  // 扩散像素环
-  for (let i = 0; i < 18; i++) {
-    const a = (i / 18) * Math.PI * 2;
-    px(ctx, x + Math.cos(a) * r - 1.5, y + Math.sin(a) * r - 1.5, 3, 3,
-       i % 3 === 0 ? '#FFD65A' : '#E8663A');
-  }
-  // 冲击中心
-  if (p < 0.45) px(ctx, x - 6, y - 6, 12, 12, 'rgba(255,255,255,0.9)');
-  // 血花
-  for (let i = 0; i < 8; i++) {
-    const a = (i / 8) * Math.PI * 2 + 0.4;
-    const d = 3 + p * 20;
-    px(ctx, x + Math.cos(a) * d, y + Math.sin(a) * d, 2, 2, '#C23A22');
-  }
-}
-
-const DEBRIS = [
-  { a: -2.6, s: 26, c: '#C23A22' },
-  { a: -2.1, s: 20, c: '#8F1B12' },
-  { a: -1.7, s: 30, c: '#E9A07A' },
-  { a: -1.2, s: 22, c: '#B9C0C8' },
-  { a: -0.8, s: 28, c: '#C23A22' },
-  { a: -0.4, s: 18, c: '#F2C14E' },
-  { a: 0.1, s: 24, c: '#8F1B12' },
-  { a: 0.5, s: 20, c: '#C23A22' },
-  { a: 0.9, s: 26, c: '#E9A07A' },
-  { a: 1.3, s: 22, c: '#7A2418' },
-  { a: 1.8, s: 18, c: '#B9C0C8' },
-  { a: 2.4, s: 24, c: '#8F1B12' }
-];
-
-function drawDeath(ctx, elapsed) {
-  if (elapsed <= 0) return;
-  const t = Math.min(elapsed, 1.4);
-  DEBRIS.forEach((d, i) => {
-    const vx = Math.cos(d.a) * d.s;
-    const vy = Math.sin(d.a) * d.s - 22;
-    const x = HUS_X + vx * t;
-    const y = GROUND_Y - 20 + vy * t + 34 * t * t;
-    const size = i % 3 === 0 ? 3 : 2;
-    if (y < GROUND_Y + 2) {
-      px(ctx, x, y, size, size, d.c);
-    }
-  });
-  // 落地血迹
-  if (t > 0.6) {
-    px(ctx, HUS_X - 16, GROUND_Y, 32, 2, '#4A1410');
-  }
-}
-
-function render(canvas, elapsed) {
-  const ctx = canvas.getContext('2d');
-  ctx.imageSmoothingEnabled = false;
-  ctx.clearRect(0, 0, DW, DH);
-
-  const t = elapsed % PERIOD;
-
-  drawBackground(ctx);
-
-  // 影魔：0 - 0.42 蓄力
-  const charge = t < 0.42;
-  drawShadowFiend(ctx, charge);
-
-  // 血量与受击
-  let hp = 100;
-  let flash = 0;
-  let recoil = 0;
-  let dead = false;
-  RAZES.forEach((rz, idx) => {
-    if (t >= rz.hit) {
-      hp -= 34;
-      const age = t - rz.hit;
-      if (age < 0.14) { flash = 0.85 - age / 0.14 * 0.85; recoil = 2; }
-      else if (age < 0.32) { recoil = 1; }
-    }
-  });
-  hp = Math.max(hp, 0);
-  dead = hp <= 0;
-
-  if (!dead) {
-    drawHuskar(ctx, hp, flash, recoil);
+  // hair / headgear
+  if (char.hasHorns) {
+    px(ctx, hx, hy - 3, 2, 3, char.hair);
+    px(ctx, hx + 5, hy - 3, 2, 3, char.hair);
+  } else if (char.hasMask) {
+    px(ctx, hx - 1, hy, 9, 4, char.hair);
+    px(ctx, hx + 1, hy + 2, 1, 1, char.eye);
+    px(ctx, hx + 5, hy + 2, 1, 1, char.eye);
+  } else if (char.hasHat) {
+    px(ctx, hx, hy - 3, 7, 3, char.outfit);
+    px(ctx, hx - 1, hy - 1, 9, 1, char.outfitDark);
+    px(ctx, hx + 2, hy - 5, 3, 2, char.accent2);
   } else {
-    // 尸体倒地：保留 0.05 秒残影
-    const age = t - RAZES[2].hit;
-    if (age < 0.12) drawHuskar(ctx, 0, 0.9, 3);
-    drawDeath(ctx, age);
+    px(ctx, hx, hy - 1, 7, 2, char.hair);
+    px(ctx, hx - 1, hy, 1, 3, char.hair);
+    px(ctx, hx + 7, hy, 1, 3, char.hair);
+    if (char.hairLong) {
+      px(ctx, x - 5, by - 9, 1, 5, char.hair);
+      px(ctx, x + 4, by - 9, 1, 5, char.hair);
+    }
   }
 
-  // 三发影压
-  const sx = NEV_X + 21;
-  const sy = GROUND_Y - 29;
-  RAZES.forEach((rz) => {
-    const p = (t - rz.start) / (rz.hit - rz.start);
-    drawRazeBolt(ctx, sx, sy, rz.txs, rz.ty, p);
-  });
-
-  // 命中特效
-  RAZES.forEach((rz) => {
-    const age = t - rz.hit;
-    if (age >= 0 && age <= 0.38) drawImpact(ctx, rz.txs, rz.ty, age);
-  });
-
-  // 左侧标签
-  ctx.fillStyle = 'rgba(232,102,58,0.85)';
-  ctx.font = 'bold 6px monospace';
-  ctx.fillText('SHADOW FIEND', 6, 10);
-  ctx.fillStyle = 'rgba(224,67,42,0.85)';
-  ctx.fillText('HUSKAR', 158, 10);
+  // weapon (right hand)
+  const hx2 = x + 3 + rightArmDX, hy2 = by - 6;
+  if (char.weapon === 'sword') {
+    px(ctx, hx2 + 2, hy2 - 4, 1, 5, '#D8DCE0');
+    px(ctx, hx2 + 1, hy2, 3, 1, char.accent2);
+  } else if (char.weapon === 'axe') {
+    px(ctx, hx2 + 2, hy2 - 4, 1, 5, '#6B4A2A');
+    px(ctx, hx2 + 3, hy2 - 5, 3, 3, '#B9C0C8');
+  } else if (char.weapon === 'staff') {
+    px(ctx, hx2 + 2, hy2 - 6, 1, 7, '#6B4A2A');
+    px(ctx, hx2 + 1, hy2 - 7, 3, 2, char.accent2);
+    px(ctx, hx2 + 2, hy2 - 7, 1, 1, '#FFFFFF');
+  } else if (char.weapon === 'orb') {
+    px(ctx, hx2 + 2, hy2 - 3, 3, 3, char.accent2);
+    px(ctx, hx2 + 3, hy2 - 2, 1, 1, '#FFFFFF');
+  }
 }
 
-// 两个画布
-const bigCanvas = document.getElementById('bigStage');
-const miniCanvas = document.getElementById('miniStage');
-const killOverlay = document.getElementById('killOverlay');
-const miniSouls = document.getElementById('miniSouls');
+// ============ 场景渲染 ============
+const WALK_FPS = 8;
+const PARADE_W = 200, PARADE_H = 80, GROUND = 64, SPACING = 38, SPEED = 18;
 
-let lastKillShown = false;
+function parade(ctx, chars, elapsed) {
+  ctx.imageSmoothingEnabled = false;
+  ctx.clearRect(0, 0, PARADE_W, PARADE_H);
+  px(ctx, 0, 0, PARADE_W, PARADE_H, '#0B0611');
+  px(ctx, 0, GROUND, PARADE_W, PARADE_H - GROUND, '#14101C');
+  px(ctx, 0, GROUND, PARADE_W, 1, '#3A2C48');
+
+  if (!chars.length) return;
+  const count = chars.length;
+  const span = SPACING * count;
+  const frame = Math.floor((elapsed * WALK_FPS) % 4);
+
+  for (let i = 0; i < count * 2; i++) {
+    const char = chars[i % count];
+    let xx = ((elapsed * SPEED) + i * SPACING) % span;
+    if (xx < 0) xx += span;
+    xx -= 50;
+    if (xx > -30 && xx < PARADE_W + 30) {
+      drawChar(ctx, char, xx, GROUND, frame);
+    }
+  }
+}
+
+function march(ctx, chars, elapsed, limit = 2) {
+  ctx.imageSmoothingEnabled = false;
+  ctx.clearRect(0, 0, 40, 40);
+  const frame = Math.floor((elapsed * WALK_FPS) % 4);
+  const shown = chars.slice(0, limit);
+  const baseX = 20, cs = 18;
+  const offset = -(shown.length - 1) * cs / 2;
+  shown.forEach((c, i) => drawChar(ctx, c, baseX + offset + i * cs, 34, frame));
+}
+
+// ============ 应用 ============
+let selected = ['nevermore','juggernaut','lina','crystal_maiden'];
+let startTs = performance.now();
+
+function getChars() { return selected.map(id => CHARS[id]).filter(Boolean); }
+
+const leadCanvas = document.getElementById('leadCanvas');
+const paradeCanvas = document.getElementById('paradeCanvas');
+const countN = document.getElementById('countN');
+const capCount = document.getElementById('capCount');
+const leadCtx = leadCanvas.getContext('2d');
+const paradeCtx = paradeCanvas.getContext('2d');
 
 function loop(now) {
-  const elapsed = (now - timeOrigin) / 1000;
-  render(bigCanvas, elapsed);
-  render(miniCanvas, elapsed);
-
-  // 魂能数字
-  const souls = Math.floor((elapsed % PERIOD) * 9) % 9 + 3;
-  miniSouls.textContent = souls;
-
-  // KILL 叠加层
-  const t = elapsed % PERIOD;
-  const shouldShow = t > RAZES[2].hit + 0.06 && t < RAZES[2].hit + 1.15;
-  if (shouldShow && !lastKillShown) {
-    killOverlay.classList.remove('show');
-    void killOverlay.offsetWidth;
-    killOverlay.classList.add('show');
-  }
-  if (!shouldShow) killOverlay.classList.remove('show');
-  lastKillShown = shouldShow;
-
+  const elapsed = (now - startTs) / 1000;
+  const chars = getChars();
+  march(leadCtx, chars, elapsed, 2);
+  parade(paradeCtx, chars, elapsed);
+  countN.textContent = chars.length;
+  capCount.textContent = `${chars.length} HEROES MARCHING`;
   requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);
-
-// 重播
-document.getElementById('replayBtn').onclick = () => {
-  timeOrigin = performance.now();
-  lastKillShown = false;
-  killOverlay.classList.remove('show');
-};
 
 // 灵动岛展开
 const island = document.getElementById('island');
 island.addEventListener('click', () => {
   const expanded = island.classList.toggle('expanded');
   island.classList.toggle('compact', !expanded);
+});
+
+// 角色选择卡片
+const grid = document.getElementById('charGrid');
+ORDER.forEach(id => {
+  const char = CHARS[id];
+  const card = document.createElement('div');
+  card.className = 'char-card active';
+  card.style.setProperty('--accent', char.accent);
+  card.innerHTML = `<canvas width="40" height="40"></canvas><div class="n"></div>`;
+  card.querySelector('.n').textContent = char.name;
+  const c = card.querySelector('canvas').getContext('2d');
+  drawChar(c, char, 20, 34, 0);
+  card.addEventListener('click', () => {
+    const idx = selected.indexOf(id);
+    if (idx >= 0) selected.splice(idx, 1);
+    else selected.push(id);
+    card.classList.toggle('active', selected.includes(id));
+    startTs = performance.now();
+  });
+  grid.appendChild(card);
 });
 </script>
 </body>

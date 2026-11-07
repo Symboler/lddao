@@ -4,20 +4,16 @@ import Foundation
 /// 灵动岛 Live Activity 的数据模型，App 与 Widget 共用。
 struct HeroIslandAttributes: ActivityAttributes {
     struct ContentState: Codable, Hashable {
-        /// 已收集的魂能数量
-        var soulCount: Int
-        /// 技能充能进度 0...1
-        var rage: Double
-        /// 灵动岛展开区上方的状态文案
+        /// 参加走秀的角色 ID 列表
+        var selectedIDs: [String]
+        /// 走秀动画的时间原点，Widget 端据此自行推进动画
+        var walkStart: Date
+        /// 状态文案
         var headline: String
-        /// 像素对决动画的时间原点，Widget 端据此自行推进动画
-        var battleStart: Date
     }
 
-    var heroID: String
-    var heroName: String
-    var heroEnglishName: String
-    var skillName: String
+    /// 主题强调色（取第一个角色）
     var accentHex: String
+    /// 主题光晕色
     var glowHex: String
 }
